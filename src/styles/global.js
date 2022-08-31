@@ -17,7 +17,7 @@ body > div {
   "midcontent"
   "content";
 
-  grid-template-rows: 50px 50px auto
+  grid-template-rows: 6% 10% auto
 }
 
 `

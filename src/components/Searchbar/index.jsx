@@ -1,9 +1,15 @@
 import { Container } from "./styles";
 
-export function Searchbar() {
+export function Searchbar(props) {
+
+  function searchPokemon() {
+
+  }
+
   return (
     <Container>
-      <input type="text" placeholder="Buscar Pokemon" /> <button>Search</button>
+      <input type="text" placeholder="Digite o nome do pokémon" />
+      <button onClick={searchPokemon}>Search</button>
     </Container>
   )
 }

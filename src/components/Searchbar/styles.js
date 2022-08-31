@@ -5,13 +5,14 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   height: 35px;
-  margin-top: 20px;
+  margin: 13px;
   
 
     > input { 
       height: 100%;
       width: 70%;
       padding: 10px;
+      margin-left: 10px;
 
       border: 1px solid gray;
       border-radius: 4px 0 0 4px;
@@ -32,5 +33,14 @@ export const Container = styled.div`
 
       font-size: 16px;
       font-weight: bold;
+
+      cursor: pointer;
+
+      transition: all 0.2s;
+
+      &:hover{
+
+        filter: brightness(0.9);
+      }
     }
 `

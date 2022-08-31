@@ -1,21 +1,21 @@
-import { Container } from "./styles";
+import { Container, LoadingContainer } from "./styles";
 import { CardPokemon } from './../CardPokemon/';
-import { individualPokeInfo } from "../../utils/api";
+import { Loading } from './../Loading';
 
 export function Pokedex(props) {
   const { pokemons, loading } = props
   return (
-    <Container>
-      {loading ? 'Carregando pokemons' : <>{pokemons.map((poke) => {
+    <>
+      {loading ? <LoadingContainer><Loading /></LoadingContainer> : <Container>{pokemons.map((poke) => {
         return (
           <CardPokemon
-            key = {poke.id}
+            key={poke.id}
             name={poke.name}
             id={poke.id}
-            img={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${poke.id}.gif`}
+            img={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${ poke.id }.gif`}
             types={poke.types}
           />)
-      })}</>}
-    </Container>
+      })}</Container>}
+    </>
   )
 }
