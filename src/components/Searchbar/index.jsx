@@ -1,6 +1,7 @@
 import { Container } from "./styles";
 import { useState } from 'react';
 
+
 export function Searchbar(props) {
   const { searchPokemon } = props
   const [ search, setSearch ] = useState('bulbassaur')
@@ -21,7 +22,7 @@ export function Searchbar(props) {
   return (
     <Container>
       <input type="text" placeholder="Digite o nome do pokémon" onChange={onChangeHandler} />
-      <button onClick={onButtonClickHandler}>Search</button>
+      <button onClick={onButtonClickHandler}><p>Search</p></button>
     </Container>
   )
 }
