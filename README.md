@@ -1,6 +1,8 @@
 #  <center>Pokédex</center>
 
-![pokedex](https://media.giphy.com/media/yjDadfOrahYPr6XF1c/giphy.gif)
+<p align="center">
+  <img src="https://media.giphy.com/media/yjDadfOrahYPr6XF1c/giphy.gif">
+</p>
 
 ## Technologies 
 
