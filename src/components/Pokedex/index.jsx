@@ -3,7 +3,7 @@ import { CardPokemon } from './../CardPokemon/';
 import { Loading } from './../Loading';
 
 export function Pokedex(props) {
-  const { pokemons, loading } = props
+  const { pokemons, loading, notFound } = props
   return (
     <>
       {loading ? <LoadingContainer><Loading /></LoadingContainer> : <Container>{pokemons.map((poke) => {

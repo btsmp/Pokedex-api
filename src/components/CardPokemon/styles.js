@@ -66,6 +66,7 @@ export const Container = styled.button`
     > svg {
       cursor: pointer;
       font-size: 30px;
+      color: #EF5350
     }
 
   }

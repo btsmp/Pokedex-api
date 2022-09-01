@@ -1,8 +1,17 @@
 import { Container } from "./styles";
-import { AiOutlineHeart } from "react-icons/ai";
+import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
+import { useContext } from "react";
+import FavoriteContext from "../../contexts/favoritesContext";
 
 export function CardPokemon(props) {
+  const { favoritePokemons, updateFavoritePokemons } = useContext(FavoriteContext)
   const { name, id, img, types } = props
+
+  const favoriteHandlleClick = () => {
+    updateFavoritePokemons(name)
+  }
+
+  const heart = favoritePokemons.includes(name) ? <AiFillHeart /> : <AiOutlineHeart />
 
   return (
     <Container>
@@ -21,9 +30,9 @@ export function CardPokemon(props) {
         </div>
       </div>
 
-      <div className="right">
+      <div className="right" onClick={favoriteHandlleClick}>
         <h1>#{id}</h1>
-        <AiOutlineHeart />
+        {heart}
       </div>
 
     </Container>
