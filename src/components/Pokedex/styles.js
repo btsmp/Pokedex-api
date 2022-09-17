@@ -8,13 +8,21 @@ export const Container = styled.main`
   margin: 0 auto;
   border-radius: 8px;
   padding: 10px;
-  
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
   gap: 8px;
   overflow-y: scroll;
 
   grid-area: content;
+
+  @media (max-width: 1000px){
+    grid-template-columns: 1fr 1fr;
+  }
+
+  @media (max-width: 650px){
+    grid-template-columns: 1fr;
+  }
 `
 
 export const LoadingContainer = styled.div`

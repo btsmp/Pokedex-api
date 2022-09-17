@@ -6,6 +6,7 @@ import { Header } from '../../components/Header'
 import { getPokemons } from '../../utils/api';
 import { useEffect, useState } from 'react';
 
+
 export function Home() {
 
   const [ loading, setLoading ] = useState(false)
@@ -20,7 +21,6 @@ export function Home() {
 
 
   const pokePerPage = 30
-
   const favoritesKey = '@favorites-user'
 
   const loadFavoritesPokemons = () => {
@@ -48,6 +48,7 @@ export function Home() {
       })
 
       const results = await Promise.all(promises)
+      console.log(results)
       setPokemons(results)
       setLoading(false)
 
@@ -115,7 +116,6 @@ export function Home() {
   useEffect(() => {
     fetchPokemons()
     loadFavoritesPokemons()
-    console.log('oi')
   }, [])
 
 

@@ -1,7 +1,9 @@
+
 import { Container } from './styles'
 import { AiFillHeart, AiFillHome } from "react-icons/ai";
 import { useContext } from 'react';
-import FavoriteContext from '../../contexts/favoritesContext'
+import { FavoriteContext } from '../../contexts/favoritesContext'
+import { Link } from 'react-router-dom'
 
 export function Header() {
 
@@ -11,9 +13,9 @@ export function Header() {
   return (
     <Container>
       <nav>
-        <a href="#"><AiFillHome />Home</a>
+        <Link to='/'><AiFillHome />Home</Link>
         <span>|</span>
-        <a href="#">Fav<AiFillHeart />{favoritePokemons.length}</a>
+        <Link to='/favs'>Fav<AiFillHeart />{favoritePokemons.length}</Link>
       </nav>
 
       <img src="https://raw.githubusercontent.com/PokeAPI/media/master/logo/pokeapi_256.png" alt="Logo PokeApi" />

@@ -1,7 +1,7 @@
 import { Container } from "./styles";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
 import { useContext } from "react";
-import FavoriteContext from "../../contexts/favoritesContext";
+import { FavoriteContext } from "../../contexts/favoritesContext";
 
 export function CardPokemon(props) {
   const { favoritePokemons, updateFavoritePokemons } = useContext(FavoriteContext)

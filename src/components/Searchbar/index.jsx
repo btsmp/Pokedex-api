@@ -19,9 +19,16 @@ export function Searchbar(props) {
     searchPokemon(search)
   }
 
+  const enterHandler = (e) => {
+    if (e.key === 'Enter') {
+      searchPokemon(search)
+    }
+  }
+
+
   return (
     <Container>
-      <input type="text" placeholder="Digite o nome do pokémon" onChange={onChangeHandler} />
+      <input type="text" placeholder="Digite o nome do pokémon" onChange={onChangeHandler} onKeyDown={enterHandler} />
       <button onClick={onButtonClickHandler}><p>Search</p></button>
     </Container>
   )
