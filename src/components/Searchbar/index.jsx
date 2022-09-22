@@ -8,8 +8,9 @@ export function Searchbar(props) {
 
   const onChangeHandler = (e) => {
     const valueInput = e.target.value
-    setSearch(valueInput)
-    if (valueInput === '') {
+    let valueInputLowerCase = valueInput.toLowerCase()
+    setSearch(valueInputLowerCase)
+    if (valueInputLowerCase === '') {
       searchPokemon(undefined)
     }
   }
