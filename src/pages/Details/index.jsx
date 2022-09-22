@@ -31,9 +31,9 @@ export function Details() {
   return (
     <>
       <Header />
-      <h1 className="text-5xl capitalize font-bold text-white text-center my-3 relative">
+      <h1 className="text-5xl capitalize font-bold text-white text-center sm:my-3  my-11 relative">
         {pokemon.name} {`#${ (id).padStart(3, '0') }`}
-        <Link to='/' className="absolute left-5">
+        <Link to='/' className="absolute left-5 top-[-35px] sm:top-0">
           <AiOutlineArrowLeft className="text-[#EF5350] text-4xl hover:scale-105" />
         </Link>
       </h1>

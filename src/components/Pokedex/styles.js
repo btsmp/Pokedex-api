@@ -22,6 +22,7 @@ export const Container = styled.main`
 
   @media (max-width: 650px){
     grid-template-columns: 1fr;
+    width: 88%;
   }
 `
 
