@@ -23,6 +23,7 @@ export const Container = styled.div`
   }
 
   span {
+    margin: 0 10px 0 -14px;
     font-weight: 700;
     color: white
 

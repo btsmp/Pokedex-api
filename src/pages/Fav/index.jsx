@@ -1,17 +1,16 @@
-import { Pokedex } from "../../components/Pokedex"
+import { FavoriteWrapper } from "../../components/FavoriteWrapper"
+import { Loading } from "../../components/Loading"
 import { Header } from "../../components/Header"
-import { Empty } from "../../components/Empty"
 import { useFavorites } from "../../hooks/fav"
 import { getPokemons } from "../../utils/api"
 import { useEffect, useState } from "react"
-import './styles.css'
 
 export function Fav() {
 
   const { favorites } = useFavorites()
 
   const [ pokemons, setPokemons ] = useState([])
-  const [ loading, setLoading ] = useState(false)
+  const [ loading, setLoading ] = useState(true)
 
   const fetchFavPokemons = async () => {
     try {
@@ -39,10 +38,8 @@ export function Fav() {
   return (
     <>
       <Header />
-      <h1 className="title">Pokemons favoritados</h1>
-      {
-        pokemons.length == 0 ? <Empty /> : <Pokedex pokemons={pokemons} loading={loading} />
-      }
+      {loading ? <Loading /> : <FavoriteWrapper pokemons={pokemons} />}
+
 
     </>
 

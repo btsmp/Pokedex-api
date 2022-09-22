@@ -19,7 +19,7 @@ import darkbg from '../../assets/darkbg.jpg'
 import styled from "styled-components";
 
 
-export const Container = styled.button`
+export const Container = styled.div`
   display: flex;
   flex: 1;
   justify-content: space-between;
@@ -29,6 +29,7 @@ export const Container = styled.button`
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
   border-radius: 15px;
   transition: all 0.2s;
+  color: #111;
 
   &:hover {
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
@@ -38,15 +39,19 @@ export const Container = styled.button`
     background: white;
   }
 
-  > div {
-    display: flex;
-    height: 100%;
 
-    img {
-      height: 80%;
-      width: 100px;
-      margin: 10px
-    }
+`
+
+export const ImgWrapper = styled.div`
+  color: black;
+
+  display: flex;
+  height: 100%;
+
+  img {
+    height: 80%;
+    width: 100px;
+    margin: 10px
   }
 `
 
@@ -62,6 +67,11 @@ export const Names = styled.div`
   justify-content: space-around;
   align-items: flex-start;
   text-transform: capitalize;
+
+  > h1 {
+    font-weight: bold;
+    font-size: 24px;
+  }
 `
 
 export const Right = styled.div`
@@ -75,7 +85,10 @@ export const Right = styled.div`
 
     margin-right: 8px;
 
-    padding: 18px 0;
+    > h1 {
+      font-weight: bold;
+      font-size: 24px;
+    }
 
     > svg {
       cursor: pointer;
@@ -253,4 +266,3 @@ border-radius: 99999px;
 color: white;
 font-weight: 800;
 `
-
