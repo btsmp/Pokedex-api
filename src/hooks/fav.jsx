@@ -16,23 +16,18 @@ export function FavProvider({ children }) {
   }
 
   function updateFavorites(name) {
-
     const updatedFavorites = [ ...favorites ]
-
     const favoriteIndex = favorites.indexOf(name)
 
-
     if (favoriteIndex >= 0) {
-
       updatedFavorites.splice(favoriteIndex, 1);
-
     } else {
-
       updatedFavorites.push(name);
-
     }
 
     window.localStorage.setItem(favoritesKey, JSON.stringify(updatedFavorites))
+
+    getFavoritesData(updatedFavorites)
     setFavorites(updatedFavorites)
 
   }
@@ -50,6 +45,8 @@ export function FavProvider({ children }) {
     }
 
   }
+
+
 
   useEffect(() => {
     loadFavorites()
