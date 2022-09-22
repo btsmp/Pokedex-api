@@ -15,7 +15,6 @@ export function Searchbar(props) {
   }
 
   const onButtonClickHandler = () => {
-    console.log(search)
     searchPokemon(search)
   }
 

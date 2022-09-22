@@ -1,0 +1,10 @@
+.title {
+  width: 100%;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  margin-top: 15px;
+
+}

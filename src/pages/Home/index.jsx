@@ -1,4 +1,3 @@
-import { FavoriteProvider } from "../../contexts/favoritesContext";
 import { Pagination } from './../../components/Pagination/index';
 import { Searchbar } from '../../components/Searchbar';
 import { Pokedex } from '../../components/Pokedex'
@@ -8,25 +7,15 @@ import { useEffect, useState } from 'react';
 
 
 export function Home() {
-
   const [ loading, setLoading ] = useState(false)
   const [ pokemons, setPokemons ] = useState([])
   const [ page, setPage ] = useState(0)
   const [ nextData, setNextData ] = useState([])
   const [ previousData, setPreviousData ] = useState([])
   const [ totalPokes, setTotalPokes ] = useState(1154)
-  const [ favorites, setFavorites ] = useState([])
   const [ totalPages, setTotalPage ] = useState(0)
   const [ notFound, setNotFound ] = useState(false)
-
-
   const pokePerPage = 30
-  const favoritesKey = '@favorites-user'
-
-  const loadFavoritesPokemons = () => {
-    const pokemons = JSON.parse(window.localStorage.getItem(favoritesKey)) || []
-    setFavorites(pokemons)
-  }
 
   const fetchPokemons = async (url) => {
 
@@ -48,12 +37,11 @@ export function Home() {
       })
 
       const results = await Promise.all(promises)
-      console.log(results)
       setPokemons(results)
       setLoading(false)
 
-    } catch {
-      console.log('fetchPokemons problem')
+    } catch (err) {
+      console.log('fetchPokemons problem', err)
 
     }
   }
@@ -74,21 +62,6 @@ export function Home() {
       fetchPokemons(previousData)
       setPage(page - 1)
     }
-
-  }
-
-  const updateFavoritesPokemon = (name) => {
-    const updatedFavorites = [ ...favorites ]
-    const favoriteIndex = favorites.indexOf(name)
-
-    if (favoriteIndex >= 0) {
-      updatedFavorites.splice(favoriteIndex, 1);
-    } else {
-      updatedFavorites.push(name);
-    }
-
-    window.localStorage.setItem(favoritesKey, JSON.stringify(updatedFavorites))
-    setFavorites(updatedFavorites)
 
   }
 
@@ -115,23 +88,15 @@ export function Home() {
 
   useEffect(() => {
     fetchPokemons()
-    loadFavoritesPokemons()
   }, [])
 
 
   return (
-
-    <FavoriteProvider
-      value={{
-        favoritePokemons: favorites,
-        updateFavoritePokemons: updateFavoritesPokemon,
-      }}
-    >
+    <>
       <Header />
       <Searchbar searchPokemon={searchPokemon} />
       <Pokedex pokemons={pokemons} loading={loading} notFound={notFound} />
       <Pagination nextPage={nextPage} previousPage={previousPage} page={page + 1} totalPages={totalPages} />
-    </FavoriteProvider>
-
+    </>
   )
 }

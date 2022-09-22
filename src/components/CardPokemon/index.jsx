@@ -1,17 +1,18 @@
 import { Container } from "./styles";
 import { AiOutlineHeart, AiFillHeart } from "react-icons/ai";
-import { useContext } from "react";
-import { FavoriteContext } from "../../contexts/favoritesContext";
+import { useFavorites } from "../../hooks/fav"
 
 export function CardPokemon(props) {
-  const { favoritePokemons, updateFavoritePokemons } = useContext(FavoriteContext)
+
+  const { favorites, updateFavorites } = useFavorites()
   const { name, id, img, types } = props
 
   const favoriteHandlleClick = () => {
-    updateFavoritePokemons(name)
+    updateFavorites(name)
   }
 
-  const heart = favoritePokemons.includes(name) ? <AiFillHeart /> : <AiOutlineHeart />
+  const heart = favorites.includes(name) ? <AiFillHeart /> : <AiOutlineHeart />
+  console.log(favorites)
 
   return (
     <Container>
