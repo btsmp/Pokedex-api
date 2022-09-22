@@ -1,8 +1,9 @@
 import { Pokedex } from "../../components/Pokedex"
 import { Header } from "../../components/Header"
-import { getPokemons } from '../../utils/api';
+import { Empty } from "../../components/Empty"
 import { useFavorites } from "../../hooks/fav"
-import { useEffect, useState } from "react";
+import { getPokemons } from "../../utils/api"
+import { useEffect, useState } from "react"
 import './styles.css'
 
 export function Fav() {
@@ -37,9 +38,12 @@ export function Fav() {
 
   return (
     <>
-      <h1 className="title">Pokemons favoritados</h1>
       <Header />
-      <Pokedex pokemons={pokemons} loading={loading} />
+      <h1 className="title">Pokemons favoritados</h1>
+      {
+        pokemons.length == 0 ? <Empty /> : <Pokedex pokemons={pokemons} loading={loading} />
+      }
+
     </>
 
   )
