@@ -1,15 +1,18 @@
 import { createContext, useContext, useEffect, useState } from "react";
+import { getPokemons } from "../utils/api";
 
 const FavoritesContext = createContext([])
 
 export function FavProvider({ children }) {
   const [ favorites, setFavorites ] = useState([])
+  const [ favoritesData, setFavoritesData ] = useState([])
 
   const favoritesKey = '@favorites-user'
 
   function loadFavorites() {
     const pokemons = JSON.parse(window.localStorage.getItem(favoritesKey) || '[]') || []
     setFavorites(pokemons)
+    getFavoritesData(pokemons)
   }
 
   function updateFavorites(name) {
@@ -34,12 +37,26 @@ export function FavProvider({ children }) {
 
   }
 
+  async function getFavoritesData(pokemons) {
+    try {
+      const dataPokemons = pokemons.map(async pokemon => {
+        return await getPokemons(`https://pokeapi.co/api/v2/pokemon/${ pokemon }`)
+      })
+      const results = await Promise.all(dataPokemons)
+      setFavoritesData(results)
+
+    } catch (err) {
+      console.log(err)
+    }
+
+  }
+
   useEffect(() => {
     loadFavorites()
   }, [])
 
   return (
-    <FavoritesContext.Provider value={{ favorites, updateFavorites }}>
+    <FavoritesContext.Provider value={{ favorites, updateFavorites, favoritesData }}>
       {children}
     </FavoritesContext.Provider>
   )
