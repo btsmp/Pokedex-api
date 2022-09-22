@@ -8,12 +8,19 @@ export function Pokedex(props) {
   return (
     <>
       {loading ? <LoadingContainer><Loading /></LoadingContainer> : <Container>{pokemons.map((poke) => {
+        let pokeImg
+
+        if (poke.id > 650) {
+          pokeImg = poke.sprites.front_default
+        } else {
+          pokeImg = `https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${ poke.id }.gif`
+        }
         return (
           <CardPokemon
             key={poke.id}
             name={poke.name}
             id={poke.id}
-            img={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/versions/generation-v/black-white/animated/${ poke.id }.gif`}
+            img={pokeImg}
             types={poke.types}
           />)
       })}</Container>}

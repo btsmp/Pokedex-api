@@ -8,13 +8,16 @@ export function FavProvider({ children }) {
   const favoritesKey = '@favorites-user'
 
   function loadFavorites() {
-    const pokemons = JSON.parse(window.localStorage.getItem(favoritesKey)) || []
+    const pokemons = JSON.parse(window.localStorage.getItem(favoritesKey) || '[]') || []
     setFavorites(pokemons)
   }
 
   function updateFavorites(name) {
+
     const updatedFavorites = [ ...favorites ]
+
     const favoriteIndex = favorites.indexOf(name)
+
 
     if (favoriteIndex >= 0) {
 
